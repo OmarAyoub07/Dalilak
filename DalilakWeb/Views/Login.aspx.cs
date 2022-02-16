@@ -11,7 +11,15 @@ namespace DalilakWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string test = "";
+            using (var context = new Models.Database())
+            {
+                foreach(var item in context.Users)
+                {
+                    test += (item.id + "\n"+ item.name + "<br/>");
+                }
+            }
+            Response.Write(test);
         }
     }
 }
