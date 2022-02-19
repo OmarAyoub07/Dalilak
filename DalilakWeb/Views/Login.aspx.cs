@@ -1,6 +1,10 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,15 +15,8 @@ namespace DalilakWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string test = "";
-            using (var context = new Models.Database())
-            {
-                foreach(var item in context.Users)
-                {
-                    test += (item.id + "\n"+ item.name + "<br/>");
-                }
-            }
-            Response.Write(test);
+
         }
+        
     }
 }
