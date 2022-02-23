@@ -429,6 +429,8 @@
     <Content Include="Assets\placeholder\user-profile.jpg" />
     <Content Include="Assets\placeholder\user.jpg" />
     <Content Include="Assets\placeholder\video-cam.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Views\Dashboard\MainDashboard.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="Web.config" />
@@ -444,8 +446,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Models\DatabaseMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Dashboard\MainDashboard.aspx.cs">
+      <DependentUpon>MainDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard\MainDashboard.aspx.designer.cs">
+      <DependentUpon>MainDashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

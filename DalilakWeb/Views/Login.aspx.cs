@@ -17,6 +17,21 @@ namespace DalilakWeb.Views
         {
 
         }
-        
+        public void btn_Sigin_click(object sender, EventArgs e)
+        {
+            string uri = "http://api.dalilak.pro/Login/admin_?email=" + email.Text + "&pass=" + pass.Text;
+            bool isExist = false;
+            using (var client = new HttpClient())
+            {
+                var respons = client.PostAsync(uri, null);
+
+                isExist = Convert.ToBoolean(respons.Result.Content.ReadAsStringAsync().Result.ToString());
+            }
+            if (isExist)
+            {
+                Response.Write(isExist.ToString());
+            }
+        }
+
     }
 }
