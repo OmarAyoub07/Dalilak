@@ -26,13 +26,14 @@
                         <form style="border: 2px solid gray;" runat="server">
                         <div class="login-form">
                             <h4>Administratior Login</h4>
+                            <label id="lbl_err_msg" runat="server" style="color: saddlebrown;">! "You entered an invalid email or password"</label>
                                 <div class="form-group">
                                     <label>Email address</label>
-                                    <asp:TextBox id="email" type="email" class="form-control" placeholder="Email" runat="server"></asp:TextBox>
+                                    <asp:TextBox id="txt_email" type="email" class="form-control" placeholder="Email" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <asp:TextBox id="pass" type="password" class="form-control" placeholder="Password" runat="server"></asp:TextBox>
+                                    <asp:TextBox id="txt_pass" type="password" class="form-control" placeholder="Password" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="checkbox">
                                   

@@ -15,11 +15,11 @@ namespace DalilakWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbl_err_msg.Visible = false;
         }
         public void btn_Sigin_click(object sender, EventArgs e)
         {
-            string uri = "http://api.dalilak.pro/Login/admin_?email=" + email.Text + "&pass=" + pass.Text;
+            string uri = "http://api.dalilak.pro/Login/admin_?email=" + txt_email.Text + "&pass=" + txt_pass.Text;
             bool isExist = false;
             using (var client = new HttpClient())
             {
@@ -29,7 +29,12 @@ namespace DalilakWeb.Views
             }
             if (isExist)
             {
-                Response.Write(isExist.ToString());
+                HttpContext.Current.Session["admin"] = txt_email.Text;
+                Response.Redirect("~//Dashboard");
+            }
+            else
+            {
+                lbl_err_msg.Visible= true;
             }
         }
 

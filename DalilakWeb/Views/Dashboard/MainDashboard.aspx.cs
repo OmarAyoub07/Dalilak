@@ -11,7 +11,7 @@ namespace DalilakWeb.Views.Dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbl_admin.InnerText = HttpContext.Current.Session["admin"].ToString();
         }
     }
 }
