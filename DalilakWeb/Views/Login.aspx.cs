@@ -36,6 +36,8 @@ namespace DalilakWeb.Views
             {
                 lbl_err_msg.Visible= true;
             }
+
+            //string uri = "http://api.dalilak.pro/insert/user_?name= " + txt_name.text + "&phone=" + txt_phone.text + 
         }
 
     }
