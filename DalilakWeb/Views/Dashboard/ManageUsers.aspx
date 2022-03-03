@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MainDashboard.aspx.cs" Inherits="DalilakWeb.Views.Dashboard.MainDashboard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="DalilakWeb.Views.Dashboard.ManageUsers" %>
 
 <!DOCTYPE html>
 
@@ -19,11 +19,10 @@
     <link href="../../assets/css/lib/bootstrap.min.css" rel="stylesheet"/>
     <link href="../../assets/css/lib/helper.css" rel="stylesheet"/>
     <link href="../../assets/css/style_dp.css" rel="stylesheet"/>
-    <title>Dashboard</title>
+    <title>Manage Users</title>
 </head>
 <body>
-
-<form runat="server">
+    <form runat="server">
 
     <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
         <div class="nano">
@@ -39,7 +38,7 @@
                     <li class="label">Managing System</li>
 
 
-                     <li><a href="~//Users" runat="server" ><i class="ti-panel"></i> Manage Users </a>
+                     <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Manage Users </a>
                     </li>
 
                     <li><a href="app-event-calender.html"><i class="ti-calendar"></i> Manage Places </a></li>
@@ -76,6 +75,7 @@
             </div>
         </div>
     </div>
+
 <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
@@ -83,19 +83,45 @@
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>System Summary</h1>
+                                <h1>Manage Users</h1>
                             </div>
                         </div>
                     </div>
-
                     </div>
+                <section id="main-content">
+                    <div class="row">
+                        
+                            <div class="card">
+                                <div class="card-title">
+                                    <h4>Table Basic </h4>
+                                    
+                                </div>
+                                <div class="card-body">
+                <asp:DataList ID="users_list" runat="server"> 
+                    <ItemTemplate>
+                         
+                        <div class="table-responsive">
+                                        <table class="table">
+                             <tr>  
+                        <td>  
+                            <b>ID: </b><span class="city"><%# Eval("ID") %></span><br />  
+                            <b>Name: </b><span class="postal"><%# Eval("Name") %></span><br />  
+                            <b>Email: </b><span class="country"><%# Eval("Email")%></span><br />  
+                        </td>  
+                    </tr>
+                                            </table>
+                                            </div>
+                    </ItemTemplate>
+                </asp:DataList>
+</div>
+                                </div>
+                        </div>
+                    </section>
                 </div>
             </div>
     </div>
-
 </form>
-
-        <!-- jquery vendor -->
+     <!-- jquery vendor -->
     <script src="../../assets/js/lib/jquery.min.js"></script>
     <script src="../../assets/js/lib/jquery.nanoscroller.min.js"></script>
     <!-- nano scroller -->

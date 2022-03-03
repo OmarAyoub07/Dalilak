@@ -18,6 +18,7 @@ namespace DalilakWeb
 
             url.MapPageRoute("routing to main Dashboard page", "Dashboard", "~/Views/Dashboard/MainDashboard.aspx");
 
+            url.MapPageRoute("routing to Manage Users page", "Users", "~/Views/Dashboard/ManageUsers.aspx");
 
         }
     }
