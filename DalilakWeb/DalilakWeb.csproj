@@ -431,6 +431,8 @@
     <Content Include="Assets\placeholder\video-cam.png" />
     <Content Include="Global.asax" />
     <Content Include="Views\Dashboard\MainDashboard.aspx" />
+    <Content Include="Views\Dashboard\ManagePlaces.aspx" />
+    <Content Include="Views\Dashboard\ManageRequests.aspx" />
     <Content Include="Views\Dashboard\ManageUsers.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Index.aspx" />
@@ -458,6 +460,20 @@
     </Compile>
     <Compile Include="Views\Dashboard\MainDashboard.aspx.designer.cs">
       <DependentUpon>MainDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\ManagePlaces.aspx.cs">
+      <DependentUpon>ManagePlaces.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard\ManagePlaces.aspx.designer.cs">
+      <DependentUpon>ManagePlaces.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\ManageRequests.aspx.cs">
+      <DependentUpon>ManageRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard\ManageRequests.aspx.designer.cs">
+      <DependentUpon>ManageRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Dashboard\ManageUsers.aspx.cs">
       <DependentUpon>ManageUsers.aspx</DependentUpon>

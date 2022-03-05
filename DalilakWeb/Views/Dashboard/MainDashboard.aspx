@@ -25,38 +25,47 @@
 
 <form runat="server">
 
+        <%-- side navigation bar from focus template (the design changed to meet the system requirments) --%>
     <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
         <div class="nano">
             <div class="nano-content">
+
+                <%-- nvigation list Items --%>
                 <ul>
-                    <div class="logo"><a href="index.html"><span>Dalilak.Pro</span></a></div>
+                    <div class="logo"><a href="http://dalilak.pro"><span>Dalilak.Pro</span></a></div>
 
                     <li class="label">Dashboard</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> System Summary</a>
-                        
-                    </li>
+
+                    <li><a href="#"><i class="ti-bar-chart-alt"></i> System Summary </a></li>
 
                     <li class="label">Managing System</li>
 
+                    <li><a runat="server" href="~//Users"><i class="ti-panel"></i> Manage Users </a></li>
 
-                     <li><a href="~//Users" runat="server" ><i class="ti-panel"></i> Manage Users </a>
-                    </li>
+                    <li><a runat="server" href="~//Places"><i class="ti-calendar"></i> Manage Places </a></li>
 
-                    <li><a href="app-event-calender.html"><i class="ti-calendar"></i> Manage Places </a></li>
-                    <li><a href="app-profile.html"><i class="ti-files"></i> Requests <span class="badge badge-primary">2</span></a></li>
-                    <li><a href="app-email.html"><i class="ti-email"></i> Email-Reports</a></li>
+                    <li><a runat="server" href="~//Requests"><i class="ti-files"></i> Requests <span class="badge badge-primary">2</span></a></li>
+
+                    <li><a href="mailto: dalilak526@gmail.com"><i class="ti-email"></i> Email-Reports</a></li>
     
-                    <li><a><i class="ti-close"></i> Logout</a></li>
+                    <li><asp:LinkButton runat="server" OnClick="logOut"><i class="ti-close"></i> Logout</asp:LinkButton></li>
                 </ul>
+
             </div>
         </div>
     </div>
-    <!-- /# sidebar -->
+    <!-- /# end of sidebar -->
 
+        <%-- Header --%>
       <div class="header">
         <div class="container-fluid">
+
             <div class="row">
+
                 <div class="col-lg-12">
+
+
+                    <%-- Click on lines to show or hide the sidebar --%>
                     <div class="float-left">
                         <div class="hamburger sidebar-toggle">
                             <span class="line"></span>
@@ -64,18 +73,27 @@
                             <span class="line"></span>
                         </div>
                     </div>
+
+                    <%-- Label to hold the email of logined account --%>
                     <div class="float-right">
                         <div class="dropdown dib">
                             <div class="header-icon" data-toggle="dropdown">
+                                <%-- in the server side apply this concept {lbl_admin.text = logined email} to display logined email --%>
                                 <span class="user-avatar" id="lbl_admin" runat="server"></span>
-
                             </div>
                         </div>
                     </div>
+
+
                 </div>
+                <%-- / Column End --%>
             </div>
+            <%-- /Row End --%>
         </div>
     </div>
+        <%-- / End of Header --%>
+
+
 <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
