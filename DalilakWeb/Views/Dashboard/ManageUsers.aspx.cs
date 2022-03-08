@@ -142,16 +142,7 @@ namespace DalilakWeb.Views.Dashboard
                 lbl_infoIsGuider.InnerText = table.Rows[row_Index][5].ToString();
                 lbl_infoAge.InnerText = table.Rows[row_Index][6].ToString();
                 lbl_infoBio.InnerText = table.Rows[row_Index][7].ToString();
-
-                // select image from "users" (SELECT image From users WHERE id = 'id')
-                var image = users.Single(user => user.id == table.Rows[row_Index][0].ToString()).image;
-                if (image != null)
-                {
-                    // convert byte array to image
-                    string base64String = Convert.ToBase64String(image, 0, image.Length);
-                    // Display image
-                    img_avatar.Src = "data:image/png;base64," + base64String;
-                } 
+                displayAvatar(table.Rows[row_Index][0].ToString());
             }
 
         }
@@ -201,7 +192,7 @@ namespace DalilakWeb.Views.Dashboard
         protected void post_AddUser(object sender, EventArgs e)
         {
             // uri required to post request, with setting values of parameters (name, phone, and email)
-            string uri = "http://api.dalilak.pro/Insert/User_?name="+txt_addName.Text+"&phone="+txt_addPhone.Text+"&email="+txt_addEmail.Text;
+            string uri = "http://api.dalilak.pro/Insert/NewUser_?name="+txt_addName.Text+"&phone="+txt_addPhone.Text+"&email="+txt_addEmail.Text;
 
 
             using (var client = new HttpClient())
@@ -234,7 +225,7 @@ namespace DalilakWeb.Views.Dashboard
         protected void post_editedUser(object sender, EventArgs e)
         {
             // post request uri
-            string uri = "http://api.dalilak.pro/insert/User_?id="+hidden_userId.InnerText+"&userType="+rdioLst_acsbilty.SelectedValue;
+            string uri = "http://api.dalilak.pro/insert/UpdateUser_?id="+hidden_userId.InnerText+"&userType="+rdioLst_acsbilty.SelectedValue;
 
             // minimum lenght of email == 10
             if (txt_editEmail.Text.Length > 10)
@@ -273,13 +264,13 @@ namespace DalilakWeb.Views.Dashboard
         }
 
 
-        /* Declare tools (7 function as tools)*/
+        /* Declare tools (8 function as tools)*/
 
         // 1- get users from database
         private void getUsers()
         {
             // get request uri - to get users
-            string uri = "http://api.dalilak.pro/query/users_?";
+            string uri = "http://api.dalilak.pro/query/users_";
 
             using (var client = new HttpClient())
             {
@@ -292,7 +283,7 @@ namespace DalilakWeb.Views.Dashboard
                 users = JsonConvert.DeserializeObject<List<User>>(result);
 
                 // uri to get cities
-                uri = "http://api.dalilak.pro/query/cities_?";
+                uri = "http://api.dalilak.pro/query/cities_";
 
                 respons = client.GetAsync(uri);
 
@@ -372,6 +363,17 @@ namespace DalilakWeb.Views.Dashboard
             table.Rows.Clear();
             table.Columns.Clear();
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
+
+        // 8- display user avatar
+        private void displayAvatar(string user_id)
+        {
+            string uri = "http://api.dalilak.pro/Query/ProfileImage_?id="+user_id;
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(uri);
+                img_avatar.Src = "data:image/png;base64," + response.Result.Content.ReadAsStringAsync().Result;
+            }
         }
 
     }
