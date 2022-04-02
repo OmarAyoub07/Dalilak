@@ -13,7 +13,7 @@
         public string name { get; set; }
         public bool user_type { get; set; }
         public int age { get; set; }
-        public byte[] image { get; set; }
+        public string image { get; set; }
         public string information { get; set; }
         public string record_doc { get; set; }
 
@@ -57,7 +57,7 @@
     {
         public string admin_id { get; set; }
         public string user_id { get; set; }
-        public byte[] file { get; set; }
+        public string file { get; set; }
         public bool req_status { get; set; }
 
     }
@@ -67,13 +67,13 @@
         public string admin_id { get; set; }
         public string user_id { get; set; }
         public string operation { get; set; }
+        public byte[] file { get; set; }
+
     }
 
-    public class Ad
+public class Ad
     {
         public string admin_id { get; set; }
-
         public string city_id { get; set; }
-
-        public byte[] ad_image { get; set; }
+        public string ad_image { get; set; }
     }

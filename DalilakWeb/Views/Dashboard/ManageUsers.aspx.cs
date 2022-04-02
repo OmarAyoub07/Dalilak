@@ -48,15 +48,22 @@ namespace DalilakWeb.Views.Dashboard
                 // prepare the columns of table to bind with "datalist" at client-side
                 // some columns will not be binded. Theses columns have different needs,
                 // for example "id", to update user in database using his id
-                // the admin have no ability to see the "id"
-                table.Columns.Add("id");
-                table.Columns.Add("Name");
-                table.Columns.Add("Email");
-                table.Columns.Add("Phone");
-                table.Columns.Add("City");
-                table.Columns.Add("Accessibility");
-                table.Columns.Add("age");
-                table.Columns.Add("Bio");
+                // the admin have no permissions to see the "id"
+                try
+                {
+                    table.Columns.Add("id");
+                    table.Columns.Add("Name");
+                    table.Columns.Add("Email");
+                    table.Columns.Add("Phone");
+                    table.Columns.Add("City");
+                    table.Columns.Add("Accessibility");
+                    table.Columns.Add("age");
+                    table.Columns.Add("Bio");
+                }
+                catch(Exception err)
+                {
+                    reload();
+                }
 
                 // Get Request to get all users to "users" variable
                 getUsers();
