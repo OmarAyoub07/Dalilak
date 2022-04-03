@@ -6,7 +6,6 @@
 <head runat="server">
     <meta charset="utf-8" />
 
-        <!-- ================= Favicon ================== -->
     <!-- Styles -->
     <link href="../../assets/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet"/>
     <link href="../../assets/css/lib/chartist/chartist.min.css" rel="stylesheet"/>
@@ -99,7 +98,8 @@
 <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
-                <div class="row">
+
+                <div class="row"> <!--Header Row-->
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
@@ -107,11 +107,13 @@
                             </div>
                         </div>
                     </div>
+                    </div> <!-- / End Header Row -->
 
-                    </div>
                 <section id="main-content">
-                    <div class="row">
-                        <div class="col-lg-3">
+
+                    <div class="row"> <!-- Row of 4 Boxes, that show the total of users, guiders, places and cities -->
+
+                        <div class="col-lg-3"> <!-- Box 1 -->
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-user"></i>
@@ -122,8 +124,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
+                        </div> <!-- /End of Box 1-->
+
+                        <div class="col-lg-3"><!-- Box 2 -->
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-map-alt color-primary border-primary"></i>
@@ -134,8 +137,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
+                        </div><!-- /End of Box 2-->
+
+                        <div class="col-lg-3"><!-- Box 3 -->
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-gallery color-success border-success"></i>
@@ -146,8 +150,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
+                        </div><!-- /End of Box 3-->
+
+                        <div class="col-lg-3"><!-- Box 4 -->
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-location-pin color-danger border-danger"></i></div>
@@ -157,18 +162,22 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div><!-- /End of Box 4-->
+                    </div> <!--/ Row End -->
 
-                    <div class="row">
-                        <div class="col-lg-7">
+                    <div class="row"> <!-- Row That contain the chart of predicted values-->
+
+                        <div class="col-lg-7"> <!-- Card 1 - Line chart for 3 places (Prediction of next 19 hour)-->
                             <div class="card">
+
                                 <div class="card-title">
                                     <h4>Linear Regression Prediction Samples</h4>
-
                                 </div>
+
+                                <!-- Rendering 2D Line Chart -->
                                 <canvas id="LinearRegressionChart" style="width:100%; height:400px;"></canvas>
 
+                                    <!--JS, get values from c# (Server Side) to render the graph-->
                                     <script>
                                         var xValues = [
                                             <%=times[0]%>,
@@ -226,19 +235,22 @@
                                     </script>
 
                             </div>
-                        </div>
+                        </div> <!--/ Line Chart card End-->
 
-                        <div class="col-lg-5">
+                        <div class="col-lg-5"><!-- Card 2 - Pie chart that visualize the total of recommender model predictions-->
                             <div class="card">
+
                                 <div class="card-title">
                                     <h4>Recommender System</h4>
-
                                 </div>
+
                                 <div class="card-body">
                                     <div id="piechart"></div>
 
+                                    <!-- Redering -->
                                     <canvas id="TotalRecommendChart" style="width:100%; height:400px;"></canvas>
 
+                                    <!-- JS, Get the values from Server Side -->
                                     <script>
                                         var xValues = ["Recommended", "Not Recommended", "Cant Predict"];
                                         var yValues = [<%=recommenderSystem_totals[0]%> , <%=recommenderSystem_totals[1]%>, <%=recommenderSystem_totals[2]%>];
@@ -262,20 +274,21 @@
  
                                 </div>
                             </div>
-                        </div>
+                        </div> <!--/ Pie Chart End-->
                     </div>
+
+                    <!--Footer-->
                     <div class="row">
                             <div class="col-lg-12">
                                 <div class="footer">
                                     <p>2022 © Admin Board. - <a href="http://dalilak.pro">dalilak.pro</a></p>
                                 </div>
                             </div>
-                        </div>
+                        </div> <!--/Footer End -->
                 </section>
                 </div>
             </div>
     </div>
-
 </form>
 
         <!-- jquery vendor -->
