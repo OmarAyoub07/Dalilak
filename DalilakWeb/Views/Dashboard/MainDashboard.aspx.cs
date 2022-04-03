@@ -18,7 +18,7 @@ namespace DalilakWeb.Views.Dashboard
         public float[] visitsRate2 = new float[7];
         public float[] visitsRate3 = new float[7];
 
-        private DateTime now = DateTime.Now;
+        private DateTime now = DateTime.UtcNow;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (HttpContext.Current.Session["admin"] == null)
@@ -28,7 +28,7 @@ namespace DalilakWeb.Views.Dashboard
             else
                 lbl_admin.InnerText = HttpContext.Current.Session["admin"].ToString();
 
-            int time = now.Hour;
+            int time = now.Hour+3;
             setTimes(time);
             setVisitsRate();
             setTotalRecommendations();

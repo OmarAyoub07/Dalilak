@@ -19,9 +19,7 @@
     <link href="../../assets/css/lib/bootstrap.min.css" rel="stylesheet"/>
     <link href="../../assets/css/lib/helper.css" rel="stylesheet"/>
     <link href="../../assets/css/style_dp.css" rel="stylesheet"/>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-
 
     <title>Dashboard</title>
 </head>
@@ -116,7 +114,7 @@
                         <div class="col-lg-3">
                             <div class="card">
                                 <div class="stat-widget-one">
-                                    <div class="stat-icon dib"><i class="ti-user color-primary"></i>
+                                    <div class="stat-icon dib"><i class="ti-user"></i>
                                     </div>
                                     <div class="stat-content dib">
                                         <div class="stat-text">Tourists</div>
@@ -128,7 +126,7 @@
                         <div class="col-lg-3">
                             <div class="card">
                                 <div class="stat-widget-one">
-                                    <div class="stat-icon dib"><i class="far fa-address-card color-primary border-primary"></i>
+                                    <div class="stat-icon dib"><i class="ti-map-alt color-primary border-primary"></i>
                                     </div>
                                     <div class="stat-content dib">
                                         <div class="stat-text">Active Guiders</div>
@@ -152,7 +150,7 @@
                         <div class="col-lg-3">
                             <div class="card">
                                 <div class="stat-widget-one">
-                                    <div class="stat-icon dib"><i class="fas fa-archway"></i></div>
+                                    <div class="stat-icon dib"><i class="ti-location-pin color-danger border-danger"></i></div>
                                     <div class="stat-content dib">
                                         <div class="stat-text">Served Cities</div>
                                         <div class="stat-digit"><%=totals[3]%></div>
