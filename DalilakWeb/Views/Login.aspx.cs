@@ -1,13 +1,6 @@
-﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System;
 using System.Net.Http;
-using System.Text;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace DalilakWeb.Views
 {
@@ -36,9 +29,6 @@ namespace DalilakWeb.Views
             {
                 lbl_err_msg.Visible= true;
             }
-
-            //string uri = "http://api.dalilak.pro/insert/user_?name= " + txt_name.text + "&phone=" + txt_phone.text + 
         }
-
     }
 }

@@ -56,7 +56,7 @@
 
                     <li><a runat="server" href="~//Places"><i class="ti-calendar"></i> Manage Places </a></li>
 
-                    <li><a runat="server" href="~//Requests"><i class="ti-files"></i> Requests <span class="badge badge-primary">2</span></a></li>
+                    <li><a runat="server" href="~//Requests"><i class="ti-files"></i> Requests <span class="badge badge-primary"><%=HttpContext.Current.Session["notifs"]%></span></a></li>
 
                     <li><a href="mailto: dalilak526@gmail.com"><i class="ti-email"></i> Email-Reports</a></li>
     

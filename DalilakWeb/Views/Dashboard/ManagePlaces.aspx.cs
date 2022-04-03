@@ -47,6 +47,10 @@ namespace DalilakWeb.Views.Dashboard
                     table.Columns.Add("age");
                     table.Columns.Add("Bio");
                 }
+                catch
+                {
+
+                }
              }  
         }
         protected void logOut(object sender, EventArgs e)

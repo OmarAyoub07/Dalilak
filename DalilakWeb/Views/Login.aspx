@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <!-- ================= Favicon ================== -->
     <!-- Styles -->
     <link href="../assets/css/lib/font-awesome.min.css" rel="stylesheet"/>
     <link href="../assets/css/lib/themify-icons.css" rel="stylesheet"/>
