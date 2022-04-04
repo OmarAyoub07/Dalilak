@@ -119,13 +119,15 @@ namespace DalilakWeb.Views.Dashboard
                 // Remove User Operation
 
                 // post request to delete user from database
-                deleteUser(table.Rows[row_Index][0].ToString());
+                //*deleteUser(table.Rows[row_Index][0].ToString());
 
                 // remove user from application layer table
-                table.Rows.RemoveAt(row_Index);
+                //*table.Rows.RemoveAt(row_Index);
 
                 // refresh tabel
-                displayUsers();
+                //*displayUsers();
+
+                Response.Write(alert("This Function Is Disabled..."));
             }
             else if(e.CommandName == "Adding")
             {
