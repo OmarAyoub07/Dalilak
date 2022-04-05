@@ -450,15 +450,6 @@
 
                                                 </div>
 
-                                                <%--<div class="address-content">
-                                                </div>
-
-                                                <div class="birthday-content">
-                                                  <span class="contact-title">Location:</span>
-                                                  
-                                                </div>
-                                            </div>--%>
-
 
                                             <div class="custom-tab user-profile-tab">
                                                 <ul class="nav nav-tabs" role="tablist">

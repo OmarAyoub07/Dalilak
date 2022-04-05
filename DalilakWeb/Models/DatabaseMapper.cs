@@ -55,15 +55,17 @@
 
     public class Request
     {
+        public int id { get; set; }
         public string admin_id { get; set; }
         public string user_id { get; set; }
-        public string file { get; set; }
-        public bool req_status { get; set; }
+        public byte[] file { get; set; }
+        public int req_status { get; set; }
 
     }
 
     public class Modification
     {
+        public int id { get; set; }
         public string admin_id { get; set; }
         public string user_id { get; set; }
         public string operation { get; set; }

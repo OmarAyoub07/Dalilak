@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageRequests.aspx.cs" Inherits="DalilakWeb.Views.Dashboard.ManageRequests" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageRequests.aspx.cs" Inherits="DalilakWeb.Views.Dashboard.ManageRequests" Async="true" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -52,11 +52,11 @@
 
                     <li class="label">Managing System</li>
 
-                    <li><a href="#"><i class="ti-panel"></i> Manage Users </a></li>
+                    <li><a runat="server" href="~//Users"><i class="ti-panel"></i> Manage Users </a></li>
 
                     <li><a runat="server" href="~//Places"><i class="ti-calendar"></i> Manage Places </a></li>
 
-                    <li><a runat="server" href="~//Requests"><i class="ti-files"></i> Requests <span class="badge badge-primary"><%=HttpContext.Current.Session["notifs"]%></span></a></li>
+                    <li><a href="#"><i class="ti-files"></i> Requests <span class="badge badge-primary"><%=HttpContext.Current.Session["notifs"]%></span></a></li>
 
                     <li><a href="mailto: dalilak526@gmail.com"><i class="ti-email"></i> Email-Reports</a></li>
     
@@ -130,14 +130,97 @@
 
                 <section id="main-content">
                     <div class="row">
+                         <div class="card" style="margin-left:20%" id="form_postNewGuider" runat="server" ><!--Form Of Adding New Guider by Accept-->
+                                           
+                                            <%-- Card Header of form Header--%>
+                                            <div class="card-title">
+                                                <h4>Posting for <label id="lbl_usrAsGuider" runat="server"></label>, will Allow him to make changes on the system</h4>
+                                                <p id="lbl_warning" runat="server"></p>
+                                            </div>
+                                      
+                                            <div class="card-body">
+                                                <div class="basic-form">
+
+                                        <%-- Buttons to post of close the form --%>
+                                        <div class="button-list">
+                                            <asp:Button type="button" class="btn btn-success m-b-10 m-l-5" Text="Give The Permission" runat="server" OnClick="SubmitPermi"/>
+                                            <asp:LinkButton type="button" class="btn btn-dark m-b-10 m-l-5" Text="Cancel" runat="server" OnClick="close_forms"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  <!-- /End of Adding New place form-->
+
+                        <div class="card" id="form_information" runat="server"><%-- this form to display information for place --%>
+
+                                <div class="card-body">
+                                    <div class="user-profile">
+                                        <div class="row">
+
+                                            <%-- display the user profile image --%>
+                                            <div class="row">
+                                                <div class="user-photo m-b-30">
+                                                    <img class="img-fluid" alt="Avatar" id="img_Place" runat="server" />
+                                                </div>
+                                            </div>
+
+                                            <%-- 
+                                                For this "col", Note there are (<div> and <span>) tags with "ID" and "runat"
+                                                Each item with ID and runat will display data related to the selected user
+                                                for example: "lbl_infoName" will display user name by apply a concept of {lbl_infoName.Text = user.name}
+                                                --%>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="user-profile-name" id="lbl_infoName" runat="server"></div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="user-job-title" id="lbl_infoPlaceType" runat="server"></div><br />
+                                                    <span class="user-job-title" id="lbl_infoCity" runat="server"></span><br />
+                                                    <a id="href_loc" runat="server"><span class="user-job-title">Location</span></a>
+
+                                                </div>
+
+
+                                            <div class="custom-tab user-profile-tab">
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                    <li role="presentation" class="active">
+                                                        <a href="#" aria-controls="1" role="tab" data-toggle="tab">About</a>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="tab-content">
+                                                    <div role="tabpanel" class="tab-pane active" id="1">
+
+                                                        
+
+                                                            <div class="basic-information">
+                                                                <h4>information</h4>                             
+                                                                <div class="gender-content">
+                                                                    <span class="mail-address" id="lbl_infoDes" runat="server"></span>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                <%-- buttons --%>
+                                                <asp:Button type="button" class="btn btn-dark m-b-10 m-l-5" Text="Close" runat="server" OnClick="close_forms"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!--/ End of Information Form-->
+                            </div>
+
+                    </div>
+                    <div class="row" id="form_Guidance_ReqTables" runat="server">
 
                          <%-- This column contains of main requests table (System functionality to manage the requests) --%>
-                        <div class="col-lg-8">
+                        <div class="col-lg-6">
                          <%-- card class to collect all components within <div class="card" in form of designed layout> --%>
                             <div class="card">
                                 <%-- Card Header of form Header--%>
                                 <div class="card-title">
-                                    <h4>Guidance Requests Table </h4>
+                                    <h4>New Requests</h4>
                                 </div>
                                  <%-- * All componetnt will be within card-body (Form content)
                                      * This card designed to let the user have an ability to do searching operations
@@ -151,7 +234,7 @@
                                              * Datalist have an ability to bind data from server-side to client-side
                                              * OnItemCommand event handler waits for any type of command from columns and rows (more details below)
                                             --%>
-                                        <asp:DataList ID="request_list" runat="server" OnItemCommand="request_list_ItemCommand">
+                                        <asp:DataList ID="Newrequest_list" runat="server" OnItemCommand="request_list_ItemCommand">
                                             <HeaderTemplate>
                                                 <%-- Note: the start of table here --%>
                                                 <table class="table table-hover" style="text-align:center;">
@@ -159,7 +242,7 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Email</th>
-                                                            <th>State</th>
+                                                            <th>Request</th>
                                                         </tr>
                                                     </thead>
                                                     </HeaderTemplate>
@@ -172,10 +255,10 @@
                                                              *there must be a data tabel at server-side with same columns names to bind the data
                                                              *Eval function is responsible alson to bind the data between client and server sides
                                                             --%>
-                                                        <th scope="row"><%=++rows %></th>                                             
+                                                        <th scope="row"><%=++rows_t1 %></th>                                             
                                                         
                                                         <td><%# Eval("Email") %></td>
-                                                        <td><%# Eval("State") %></td>
+                                                        <td><%# Eval("Request") %></td>
 
                                                         <%-- * Three Buttons to do specific processes
                                                              * requires "runat" and "CommandName"
@@ -183,22 +266,25 @@
                                                              * thats lead to make if statments inside the function of event handler
                                                              * if(listener get a signal from (CommanName)){//Do processes}else if(another (CommandName))...etc
                                                             --%>
-                                                        <td><asp:LinkButton runat="server" CommandName="accept" CssClass="btn btn-primary btn-flat btn-addon m-b-10 m-l-5">
-                                                            <i class="ti-settings"></i>accept
+                                                        <td><asp:LinkButton runat="server" CommandName="accept" CssClass="btn btn-success btn-flat btn-addon m-b-10 m-l-5">
+                                                            <i class="ti-check"></i>accept
                                                             </asp:LinkButton></td>
 
                                                         <td><asp:LinkButton runat="server" CommandName="reject" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5">
                                                             <i class="ti-close"></i>reject
                                                             </asp:LinkButton></td>
 
-                                                        <td><asp:LinkButton runat="server" CommandName="browsing" class="btn btn-info btn-flat btn-addon m-b-10 m-l-5">
-                                                            <i class="ti-search"></i>Download
+                                                        <td><asp:LinkButton runat="server" CommandName="download" class="btn btn-info btn-flat btn-addon m-b-10 m-l-5">
+                                                            <i class="ti-search"></i>View
                                                             </asp:LinkButton></td>
                                                     </tr>
                                                 </tbody>
                                             </ItemTemplate>
 
                                             <FooterTemplate>
+                                                <td> No more requests..</td>
+                                                <%-- Note: End of table is here --%>
+                                                </table>
                                             </FooterTemplate>
 
                                             </asp:DataList>
@@ -208,13 +294,81 @@
                                 
                                 </div>
 
-                            </div>
+                            </div><!-- /Table one Col End -->
+                        <div class="col-lg-5">
+                         <%-- card class to collect all components within <div class="card" in form of designed layout> --%>
+                            <div class="card">
+                                <%-- Card Header of form Header--%>
+                                <div class="card-title">
+                                    <h4>Old Records</h4>
+                                </div>
+                                 <%-- * All componetnt will be within card-body (Form content)
+                                     * This card designed to let the user have an ability to do searching operations
+                                    --%>
+                                <div class="card-body">
+                                    <%-- Start of users Table --%>
+                                    <div class="table-responsive">
 
-                        </div>
+                                         <%-- * Datalist (Table for users)
+                                             * Datalist require ID and runat attributes
+                                             * Datalist have an ability to bind data from server-side to client-side
+                                             * OnItemCommand event handler waits for any type of command from columns and rows (more details below)
+                                            --%>
+                                        <asp:DataList ID="Oldrequest_list" runat="server" OnItemCommand="Oldrequest_list_ItemCommand">
+                                            <HeaderTemplate>
+                                                <%-- Note: the start of table here --%>
+                                                <table class="table table-hover" style="text-align:center;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                             <th>Admin</th>
+                                                            <th>User</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    </HeaderTemplate>
+
+                                            <ItemTemplate>
+                                                <tbody>
+                                                    <tr>
+                                                        <%-- *{++rows} rows is a counter declared at server-side
+                                                             *Eval("ColumnName"): this command responsible to take control of <ItemTemplate>
+                                                             *there must be a data tabel at server-side with same columns names to bind the data
+                                                             *Eval function is responsible alson to bind the data between client and server sides
+                                                            --%>
+                                                        <th scope="row"><%=++rows_t2 %></th>                                             
+                                                        
+                                                        <td><%# Eval("Admin") %></td>
+                                                        <td><%# Eval("User") %></td>
+                                                        <td><%# Eval("status") %></td>
+
+                                                        <td><asp:LinkButton runat="server" CommandName="review" class="btn btn-info btn-flat btn-addon m-b-10 m-l-5">
+                                                            <i class="ti-search"></i>Review
+                                                            </asp:LinkButton></td>
+                                                    </tr>
+                                                </tbody>
+                                            </ItemTemplate>
+
+                                            <FooterTemplate>
+                                                <td> No more requests..</td>
+                                                <%-- Note: End of table is here --%>
+                                                </table>
+                                            </FooterTemplate>
+
+                                            </asp:DataList>
+                                        </div>
+
+                                    </div>
+                                
+                                </div>
+
+                            </div><!-- /Table 2 Col End -->
+
+                        </div> <!-- / End of Guidance tables form -->
                     </section>
 
                 </div><%--  /End of container  --%> 
-                 </div>><%--  /End of Main  --%>
+                 </div><%--  /End of Main  --%>
 
              </div><%--  /End of page desig --%>
 
