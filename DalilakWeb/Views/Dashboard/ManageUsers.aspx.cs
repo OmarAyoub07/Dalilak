@@ -144,13 +144,14 @@ namespace DalilakWeb.Views.Dashboard
                 form_add.Visible = false;
 
                 // Display user information
+                var temp_user = users.Single(user => user.email == table.Rows[row_Index][2].ToString());
                 lbl_infoName.InnerText = table.Rows[row_Index][1].ToString();
                 lbl_infoEmail.InnerText = table.Rows[row_Index][2].ToString();
                 lbl_infoPhone.InnerText = table.Rows[row_Index][3].ToString();
                 lbl_infoCity.InnerText = table.Rows[row_Index][4].ToString();
                 lbl_infoIsGuider.InnerText = table.Rows[row_Index][5].ToString();
-                lbl_infoAge.InnerText = table.Rows[row_Index][6].ToString();
-                lbl_infoBio.InnerText = table.Rows[row_Index][7].ToString();
+                lbl_infoAge.InnerText = temp_user.age.ToString();
+                lbl_infoBio.InnerText = temp_user.information.ToString();
                 displayAvatar(table.Rows[row_Index][0].ToString());
             }
 
