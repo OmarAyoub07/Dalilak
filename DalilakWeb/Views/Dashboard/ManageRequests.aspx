@@ -25,6 +25,7 @@
     <link href="../../assets/css/lib/bootstrap.min.css" rel="stylesheet"/>
     <link href="../../assets/css/lib/helper.css" rel="stylesheet"/>
     <link href="../../assets/css/style_dp.css" rel="stylesheet"/>
+    <link rel="icon" href="../../Assets/Images/Icon.jpeg"/>
     
     <%-- Page Title --%>
 

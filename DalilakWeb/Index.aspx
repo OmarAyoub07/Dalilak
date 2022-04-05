@@ -17,6 +17,9 @@
 
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="Assets/css/styles_main.css" rel="stylesheet" />
+
+        <link rel="icon" href="Assets/Images/Icon.jpeg"/>
+
     <title id="title" runat="server"></title>
 </head>
 <body>

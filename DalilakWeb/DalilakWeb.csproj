@@ -252,6 +252,7 @@
     <Content Include="Assets\fonts\MontserratLight.svg" />
     <Content Include="Assets\fonts\themify.svg" />
     <Content Include="Assets\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Assets\Images\Icon.jpeg" />
     <Content Include="Assets\Images\main page theme.jpeg" />
     <Content Include="Assets\js\dashboard1.js" />
     <Content Include="Assets\js\dashboard2.js" />

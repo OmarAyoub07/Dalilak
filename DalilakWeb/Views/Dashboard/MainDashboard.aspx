@@ -19,6 +19,7 @@
     <link href="../../assets/css/lib/helper.css" rel="stylesheet"/>
     <link href="../../assets/css/style_dp.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="icon" href="../../Assets/Images/Icon.jpeg"/>
 
     <title>Dashboard</title>
 </head>
