@@ -58,6 +58,7 @@ namespace DalilakWeb.Views.Dashboard
 
 
                     table_oldReq.Columns.Add("reqId");
+                    table_oldReq.Columns.Add("IndexOfList");
                     table_oldReq.Columns.Add("id");
                     table_oldReq.Columns.Add("User");
                     table_oldReq.Columns.Add("Admin");
@@ -157,10 +158,28 @@ namespace DalilakWeb.Views.Dashboard
             index = (int)e.Item.ItemIndex;
             if (e.CommandName == "review")
             {
-                Response.ContentType = "application/force-download";
-                Response.AppendHeader("Content-Disposition", "attachment;filename="+old_requests[index].user_id.Split(',')[1]+"-CV.pdf");
-                Response.BinaryWrite(old_requests[index].file);
-                Response.End();
+                if (table_oldReq.Rows[index].ItemArray[5].ToString().Contains("Guider"))
+                {
+                    int temp_indx = int.Parse(table_oldReq.Rows[index].ItemArray[1].ToString());
+
+                    Response.ContentType = "application/force-download";
+                    Response.AppendHeader("Content-Disposition", "attachment;filename="+old_requests[temp_indx].user_id.Split(',')[1]+"-CV.pdf");
+                    Response.BinaryWrite(old_requests[temp_indx].file);
+                    Response.End();
+                }
+                else
+                {
+                    int temp_indx = int.Parse(table_oldReq.Rows[index].ItemArray[1].ToString());
+                    form_information.Visible = true;
+                    string[] newInfo = Encoding.UTF8.GetString(old_modi[temp_indx].file).Split('|');
+
+                    lbl_infoName.InnerText = newInfo[0];
+                    href_loc.Attributes["href"] = newInfo[1];
+                    lbl_infoDes.InnerText = newInfo[2];
+                    lbl_infoPlaceType.InnerText = newInfo[3];
+                    lbl_infoCity.InnerText = newInfo[4];
+                    img_Place.Src= "data:image/jpg;base64,"+newInfo[5];
+                }
             }
         }
 
@@ -214,7 +233,7 @@ namespace DalilakWeb.Views.Dashboard
             foreach(var req in old_requests)
             {
                 string s = req.req_status > 0 ? "Accepted Guider" : "Rejected Guider";
-                table_oldReq.Rows.Add(req.id, req.user_id.Split(',')[0], req.user_id.Split(',')[1], req.admin_id, s);
+                table_oldReq.Rows.Add(req.id, counter, req.user_id.Split(',')[0], req.user_id.Split(',')[1], req.admin_id, s);
                 counter++;
             }
 
@@ -231,7 +250,7 @@ namespace DalilakWeb.Views.Dashboard
             {
                 string operation = modi.operation.Contains("AA") ? "Accepted Adding" : modi.operation.Contains("RA") ? "Rejected Adding" :
                     modi.operation.Contains("AM") ? "Accepted Modifying" : "Rejected Modifying";
-                table_oldReq.Rows.Add(modi.id, counter, modi.user_id.Split(',')[0], modi.user_id.Split(',')[1], operation);
+                table_oldReq.Rows.Add(modi.id, counter, modi.user_id.Split(',')[0], modi.user_id.Split(',')[1], modi.admin_id, operation);
                 counter++;
             }
         }
