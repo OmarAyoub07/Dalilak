@@ -70,22 +70,24 @@ namespace DalilakWeb.Views.Dashboard
             if (e.CommandName == "editing")
             {
                 hideForms();
+                var temp_place = places.Single(plc => plc.name ==  table.Rows[row_Index][3].ToString());
                 form_editPlace.Visible = true;
-                lbl_editPlace.InnerText = places[row_Index].name;
+                lbl_editPlace.InnerText = temp_place.name;
                 _id = places[row_Index].id;
-                txt_editName.Attributes.Add("Placeholder", places[row_Index].name);
-                txt_editLoc.Attributes.Add("Placeholder", places[row_Index].location);
-                txt_editInfo.Attributes.Add("Placeholder", places[row_Index].description);
-                txt_editCity.Attributes.Add("Placeholder", places[row_Index].city_id);
-                rdioLst_EditNature.SelectedIndex = places[row_Index].place_type == "NAT" ? 0 :
-                                                   places[row_Index].place_type == "HIS" ? 1 : 2;
+                txt_editName.Attributes.Add("Placeholder", temp_place.name);
+                txt_editLoc.Attributes.Add("Placeholder", temp_place.location);
+                txt_editInfo.Attributes.Add("Placeholder", temp_place.description);
+                txt_editCity.Attributes.Add("Placeholder", temp_place.city_id);
+                rdioLst_EditNature.SelectedIndex = temp_place.place_type == "NAT" ? 0 :
+                                                   temp_place.place_type == "HIS" ? 1 : 2;
 
             }
             else if (e.CommandName == "removing")
             {
                 using (var client = new HttpClient())
                 {
-                    //string uri = "http://api.dalilak.pro/Drop/Place_?id="+places[row_Index].id;
+                    var temp_place = places.Single(plc => plc.name ==  table.Rows[row_Index][3].ToString());
+                    //string uri = "http://api.dalilak.pro/Drop/Place_?id="+temp_place.id;
                     //var response = await client.PostAsync(uri, null);
                     Response.Write(alert("This Function is Disabled...")/*response.Content.ReadAsStringAsync().Result*/);
                     //reload();
@@ -106,8 +108,9 @@ namespace DalilakWeb.Views.Dashboard
             {
                 hideForms();
                 form_information.Visible=true;
-                _id= places[row_Index].id;
-                GetOnePlace(row_Index);
+                var temp_place = places.Single(plc => plc.name ==  table.Rows[row_Index][3].ToString());
+                _id= temp_place.id;
+                GetOnePlace(temp_place);
             }
         }
         protected void searchPlaces(object sender, EventArgs e)
@@ -344,7 +347,7 @@ namespace DalilakWeb.Views.Dashboard
                 var respon = await client.PostAsync(uri, content);
             }
         }
-        private async void GetOnePlace(int index)
+        private async void GetOnePlace(Place place)
         {
             string uri = "http://api.dalilak.pro/Query/PlaceImage_?place_id="+_id;
             using (var client = new HttpClient())
@@ -352,12 +355,12 @@ namespace DalilakWeb.Views.Dashboard
                 var respon = await client.GetAsync(uri);
                 var result = respon.Content.ReadAsStringAsync().Result;
                 img_Place.Src = "data:image/jpg;base64,"+result;
-                lbl_infoName.InnerText = places[index].name;
-                href_loc.Attributes.Add("href", places[index].location);
-                lbl_infoCity.InnerText = places[index].city_id;
-                lbl_infoPlaceType.InnerText = places[index].place_type == "NAT" ? "Natural" :
-                                              places[index].place_type == "HIS" ? "Historical" : "Event";
-                lbl_infoDes.InnerText = places[index].description;
+                lbl_infoName.InnerText = place.name;
+                href_loc.Attributes.Add("href", place.location);
+                lbl_infoCity.InnerText = place.city_id;
+                lbl_infoPlaceType.InnerText = place.place_type == "NAT" ? "Natural" :
+                                              place.place_type == "HIS" ? "Historical" : "Event";
+                lbl_infoDes.InnerText = place.description;
             }
         }
 
