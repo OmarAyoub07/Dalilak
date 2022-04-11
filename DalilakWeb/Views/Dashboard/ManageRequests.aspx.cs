@@ -191,7 +191,6 @@ namespace DalilakWeb.Views.Dashboard
             }
             else if(status == "AA")
             {
-                Response.Write(alert("im here"));
                 PostPlace();
             }
         }
@@ -269,6 +268,7 @@ namespace DalilakWeb.Views.Dashboard
             form_postNewGuider.Visible = false;
             form_information.Visible = false;
         }
+
         private string alert(string message)
         {
             return @"<script>alert('"+message+"');</script>";
