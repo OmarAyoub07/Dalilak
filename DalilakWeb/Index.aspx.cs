@@ -35,8 +35,8 @@ namespace DalilakWeb.Views
             title.Text = Resources.Resource.main_title;
             h_appName.InnerText = Resources.Resource.main_h_appName;
             h_appDesc.InnerText = Resources.Resource.main_h_appDesc;
-            app_1.InnerText = Resources.Resource.download;
-            app_2.InnerText = Resources.Resource.main_commingSoon;
+            app_1.InnerText = Resources.Resource.main_commingSoon;
+            app_2.InnerText = Resources.Resource.download; 
 
         }
 
