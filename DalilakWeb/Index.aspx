@@ -36,7 +36,6 @@
                 </div>
             </div>
         </nav>
-        </form>
     <!-- Masthead-->
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
@@ -49,7 +48,7 @@
                                 <h2 class="text-white-50 mx-auto mt-2 mb-5 " id="h_appDesc" runat="server"></h2>
                             </div>
                              <div class="col">
-                            <div class="row" style="margin-top:15%;"><a class="btn btn-primary"><i class="fab fa-app-store-ios" style="font-size:38px;">  </i>  <p id="app_1" runat="server"></p></a></div>
+                            <div class="row" style="margin-top:15%;"><asp:LinkButton class="btn btn-primary" runat="server" OnClick="download_android"><i class="fab fa-app-store-ios" style="font-size:38px;">  </i>  <p id="app_1" runat="server"></p></asp:LinkButton></div>
                             <div class="row" style="margin-top:10%;"><a class="btn btn-primary"><i class="fab fa-android" style="font-size:38px;">  </i>  <p id="app_2" runat="server"></p></a></div>
                             </div>
                         </div>
@@ -59,6 +58,8 @@
 
             </div>
         </header>
+        </form>
+
    
             <!-- Footer-->
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright Ta'if University; Dalilak Website 2022</div></footer>

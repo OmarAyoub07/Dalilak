@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace DalilakWeb.Views
 {
@@ -34,9 +35,23 @@ namespace DalilakWeb.Views
             title.Text = Resources.Resource.main_title;
             h_appName.InnerText = Resources.Resource.main_h_appName;
             h_appDesc.InnerText = Resources.Resource.main_h_appDesc;
-            app_1.InnerText = Resources.Resource.main_commingSoon;
+            app_1.InnerText = Resources.Resource.download;
             app_2.InnerText = Resources.Resource.main_commingSoon;
 
+        }
+
+        protected void download_android(object sender, EventArgs e)
+        {
+            var path = Server.MapPath("~/Assets/Apps/Dalilak Pro.apk");
+
+            var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(stream);
+            var file = br.ReadBytes((Int32)stream.Length);
+
+            Response.ContentType = "application/force-download";
+            Response.AppendHeader("Content-Disposition", "attachment;filename=Dalilak Pro - vAndroid.apk");
+            Response.BinaryWrite(file);
+            Response.End();
         }
     }
 }

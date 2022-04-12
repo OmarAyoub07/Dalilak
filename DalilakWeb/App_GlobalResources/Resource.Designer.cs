@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to Download.
+        /// </summary>
+        internal static string download {
+            get {
+                return ResourceManager.GetString("download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to   App Comming Soon.
         /// </summary>
         internal static string main_commingSoon {

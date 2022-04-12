@@ -535,6 +535,7 @@
     <Content Include="Assets\fonts\weathericons-regular-webfont.woff" />
     <Content Include="Assets\fonts\weathericons-regular-webfont.woff2" />
     <Content Include="Assets\placeholder\.DS_Store" />
+    <Content Include="Assets\Apps\Dalilak Pro.apk" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Web.Debug.config">
