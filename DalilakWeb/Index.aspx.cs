@@ -42,7 +42,7 @@ namespace DalilakWeb.Views
 
         protected void download_android(object sender, EventArgs e)
         {
-            var path = Server.MapPath("~/Assets/Apps/Dalilak Pro.apk");
+            var path = Server.MapPath("~/Assets/Apps/Dalilak.apk");
 
             var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(stream);
